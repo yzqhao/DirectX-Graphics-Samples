@@ -148,6 +148,7 @@ namespace Math
         INLINE Scalar GetY() const { return Scalar(XMVectorSplatY(m_vec)); }
         INLINE Scalar GetZ() const { return Scalar(XMVectorSplatZ(m_vec)); }
         INLINE Scalar GetW() const { return Scalar(XMVectorSplatW(m_vec)); }
+        INLINE Vector3 GetXYZ() const { return Vector3(m_vec); }
         INLINE void SetX( Scalar x ) { m_vec = XMVectorPermute<4,1,2,3>(m_vec, x); }
         INLINE void SetY( Scalar y ) { m_vec = XMVectorPermute<0,5,2,3>(m_vec, y); }
         INLINE void SetZ( Scalar z ) { m_vec = XMVectorPermute<0,1,6,3>(m_vec, z); }
