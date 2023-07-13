@@ -79,7 +79,12 @@ namespace Math
         INLINE Matrix4 operator* ( const Matrix4& mat ) const { return Matrix4(XMMatrixMultiply(mat, m_mat)); }
 
         static INLINE Matrix4 MakeScale( float scale ) { return Matrix4(XMMatrixScaling(scale, scale, scale)); }
-        static INLINE Matrix4 MakeScale( Vector3 scale ) { return Matrix4(XMMatrixScalingFromVector(scale)); }
+		static INLINE Matrix4 MakeScale(Vector3 scale) { return Matrix4(XMMatrixScalingFromVector(scale)); }
+
+		static INLINE Matrix4 MakeTranslation(float x, float y, float z) { return Matrix4(XMMatrixTranslation(x, y, z)); }
+		static INLINE Matrix4 MakeTranslation(Vector3 tran) { return Matrix4(XMMatrixTranslation(tran.GetX(), tran.GetY(), tran.GetZ())); }
+
+		static INLINE Matrix4 MakeRotationY(float angle) { return Matrix4(XMMatrixRotationY(angle)); }
 
     private:
         XMMATRIX m_mat;

@@ -26,8 +26,10 @@ namespace Graphics
     void InitializeCommonState(void);
     void DestroyCommonState(void);
 
+    extern SamplerDesc SamplerPointWrapDesc;
     extern SamplerDesc SamplerLinearWrapDesc;
     extern SamplerDesc SamplerAnisoWrapDesc;
+    extern SamplerDesc SamplerAnisoClampDesc;
     extern SamplerDesc SamplerShadowDesc;
     extern SamplerDesc SamplerLinearClampDesc;
     extern SamplerDesc SamplerVolumeWrapDesc;

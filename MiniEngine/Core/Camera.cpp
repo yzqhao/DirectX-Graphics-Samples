@@ -19,6 +19,20 @@ using namespace Math;
 
 void BaseCamera::SetLookDirection( Vector3 forward, Vector3 up )
 {
+	if (m_bDefine)
+	{
+        forward = Normalize(forward);
+		Math::Vector3 R = Normalize(Cross(up, forward));
+		Math::Vector3 U = Normalize(Cross(forward, R));
+
+        U = Normalize(Cross(forward, R));
+        R = Normalize(Cross(U, forward));
+
+		m_Basis = Matrix3(R, up, forward);
+        //m_Basis = Invert(Matrix4(m_Basis)).Get3x3();
+		m_CameraToWorld.SetRotation(Quaternion(m_Basis) * Quaternion(Math::XM_PI, 0, Math::XM_PI));
+        return;
+	}
     // Given, but ensure normalization
     Scalar forwardLenSq = LengthSquare(forward);
     forward = Select(forward * RecipSqrt(forwardLenSq), -Vector3(kZUnitVector), forwardLenSq < Scalar(0.000001f));
@@ -51,6 +65,18 @@ void BaseCamera::Update()
 
 void Camera::UpdateProjMatrix( void )
 {
+    if (m_bDefine)
+	{
+        SetProjMatrix( Matrix4(
+        Vector4( 1, 0.0f, 0.0f, 0.0f ),
+        Vector4( 0.0f, 1.777777779, 0.0f, 0.0f ),
+        Vector4( 0.0f, 0.0f, 1.00009990, 1.0f ),
+        Vector4( 0.0f, 0.0f, -0.111, 0.0f )
+        ) );
+
+        return;
+    }
+    
     float Y = 1.0f / std::tanf( m_VerticalFOV * 0.5f );
     float X = Y * m_AspectRatio;
 

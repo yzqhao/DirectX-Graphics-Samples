@@ -35,8 +35,10 @@
 
 namespace Graphics
 {
+    SamplerDesc SamplerPointWrapDesc;
     SamplerDesc SamplerLinearWrapDesc;
     SamplerDesc SamplerAnisoWrapDesc;
+    SamplerDesc SamplerAnisoClampDesc;
     SamplerDesc SamplerShadowDesc;
     SamplerDesc SamplerLinearClampDesc;
     SamplerDesc SamplerVolumeWrapDesc;
@@ -114,11 +116,18 @@ namespace BitonicSort
 
 void Graphics::InitializeCommonState(void)
 {
+    SamplerPointWrapDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_POINT;
+    SamplerLinearWrap = SamplerPointWrapDesc.CreateDescriptor();
+
     SamplerLinearWrapDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;
     SamplerLinearWrap = SamplerLinearWrapDesc.CreateDescriptor();
 
     SamplerAnisoWrapDesc.MaxAnisotropy = 4;
     SamplerAnisoWrap = SamplerAnisoWrapDesc.CreateDescriptor();
+
+    SamplerAnisoClampDesc.MaxAnisotropy = 4;
+    SamplerAnisoClampDesc.SetTextureAddressMode(D3D12_TEXTURE_ADDRESS_MODE_CLAMP);
+    SamplerAnisoWrap = SamplerAnisoClampDesc.CreateDescriptor();
 
     SamplerShadowDesc.Filter = D3D12_FILTER_COMPARISON_MIN_MAG_LINEAR_MIP_POINT;
     SamplerShadowDesc.ComparisonFunc = D3D12_COMPARISON_FUNC_GREATER_EQUAL;

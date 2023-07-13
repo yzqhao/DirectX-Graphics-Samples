@@ -78,6 +78,16 @@ namespace Math
         return value == 0 ? 0 : 1 << Log2(value);
     }
 
+	template <class T> __forceinline bool Equals(T lhs, T rhs) { return lhs + std::numeric_limits<T>::epsilon() >= rhs && lhs - std::numeric_limits<T>::epsilon() <= rhs; }
+
+	template <class T> __forceinline T ABS(T t) { return t < 0 ? -t : t; }
+
+	template <class T, class U> __forceinline T Lerp(T lhs, T rhs, U t) { return lhs * (1.0 - t) + rhs * t; }
+
+	template <class T, class U> __forceinline T Min(T lhs, U rhs) { return lhs < rhs ? lhs : rhs; }
+
+	template <class T, class U> __forceinline T Max(T lhs, U rhs) { return lhs > rhs ? lhs : rhs; }
+
     using namespace DirectX;
 
     INLINE XMVECTOR SplatZero()

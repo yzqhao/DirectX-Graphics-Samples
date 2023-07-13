@@ -27,7 +27,8 @@ namespace Math
         // temporal effects and cause unpredictable results.
         void Update();
 
-        // Public functions for controlling where the camera is and its orientation
+		// Public functions for controlling where the camera is and its orientation
+        void SetBDefine(bool bdef) { m_bDefine = bdef; }
         void SetEyeAtUp( Vector3 eye, Vector3 at, Vector3 up );
         void SetLookDirection( Vector3 forward, Vector3 up );
         void SetRotation( Quaternion basisRotation );
@@ -51,7 +52,7 @@ namespace Math
 
     protected:
 
-        BaseCamera() : m_CameraToWorld(kIdentity), m_Basis(kIdentity) {}
+        BaseCamera() : m_CameraToWorld(kIdentity), m_Basis(kIdentity), m_bDefine(false) {}
 
         void SetProjMatrix( const Matrix4& ProjMat ) { m_ProjMatrix = ProjMat; }
 
@@ -83,6 +84,7 @@ namespace Math
         Frustum m_FrustumVS;		// View-space view frustum
         Frustum m_FrustumWS;		// World-space view frustum
 
+        bool m_bDefine;    // 
     };
 
     class Camera : public BaseCamera

@@ -46,6 +46,6 @@ namespace Math
     INLINE Scalar operator+ ( float s1, Scalar s2 ) { return Scalar(s1) + s2; }
     INLINE Scalar operator- ( float s1, Scalar s2 ) { return Scalar(s1) - s2; }
     INLINE Scalar operator* ( float s1, Scalar s2 ) { return Scalar(s1) * s2; }
-    INLINE Scalar operator/ ( float s1, Scalar s2 ) { return Scalar(s1) / s2; }
+	INLINE Scalar operator/ (float s1, Scalar s2) { return Scalar(s1) / s2; }
 
 } // namespace Math
