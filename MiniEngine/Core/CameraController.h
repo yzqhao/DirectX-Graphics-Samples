@@ -28,9 +28,13 @@ class CameraController
 {
 public:
     // Assumes worldUp is not the X basis vector
-    CameraController( Camera& camera ) : m_TargetCamera(camera) {}
+    CameraController( Camera& camera ) : m_TargetCamera(camera), m_timeScale(0.0f) {}
     virtual ~CameraController() {}
     virtual void Update( float dt ) = 0;
+
+
+	void SetTimeScale(float s) { m_timeScale = s; }
+	float GetTimeScale() const { return m_timeScale; }
 
     // Helper function
     static void ApplyMomentum( float& oldValue, float& newValue, float deltaTime );
@@ -40,6 +44,8 @@ protected:
 
 private:
     CameraController& operator=( const CameraController& ) {return *this;}
+
+	float m_timeScale;
 };
 
 class FlyingFPSCamera : public CameraController

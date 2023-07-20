@@ -20,6 +20,7 @@ class ComputeContext;
 
 namespace PostEffects
 {
+	extern BoolVar EnablePostEffects;   // Turn on tone PostEffects
     extern BoolVar EnableHDR;			// Turn on tone mapping features
 
     // Tone mapping parameters

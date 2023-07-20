@@ -58,6 +58,10 @@ void FlyingFPSCamera::Update( float deltaTime )
     (deltaTime);
 
     float timeScale = Graphics::DebugZoom == 0 ? 1.0f : Graphics::DebugZoom == 1 ? 0.5f : 0.25f;
+    if (GetTimeScale() > 0.0f)
+	{
+		timeScale = GetTimeScale();
+    }
 
     if (GameInput::IsFirstPressed(GameInput::kLThumbClick) || GameInput::IsFirstPressed(GameInput::kKey_lshift))
         m_FineMovement = !m_FineMovement;
@@ -175,6 +179,10 @@ void OrbitCamera::Update( float deltaTime )
     (deltaTime);
 
     float timeScale = Graphics::DebugZoom == 0 ? 1.0f : Graphics::DebugZoom == 1 ? 0.5f : 0.25f;
+    if (GetTimeScale() > 0.0f)
+	{
+		timeScale = GetTimeScale();
+    }
 
     float yaw = GameInput::GetTimeCorrectedAnalogInput( GameInput::kAnalogLeftStickX ) * timeScale * m_JoystickSensitivityX;
     float pitch = GameInput::GetTimeCorrectedAnalogInput( GameInput::kAnalogLeftStickY ) * timeScale * m_JoystickSensitivityY;

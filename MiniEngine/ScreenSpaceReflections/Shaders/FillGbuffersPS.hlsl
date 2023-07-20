@@ -1,5 +1,5 @@
 
-#include "Common.hlsl"
+#include "SSRRenderCommon.hlsl"
 
 struct VertexIn
 {

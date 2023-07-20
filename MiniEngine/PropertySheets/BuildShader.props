@@ -63,7 +63,6 @@
       <DisableOptimizations>false</DisableOptimizations>
 	  <ObjectFileOutput />
 	  <EnableDebuggingInformation Condition="'$(Configuration)'=='Debug'">true</EnableDebuggingInformation>
-      <AdditionalOptions Condition="'$(Configuration)'=='Debug'"> -Od %(AdditionalOptions)</AdditionalOptions>
     </FxCompile>
   </ItemDefinitionGroup>
 </Project>

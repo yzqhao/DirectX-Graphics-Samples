@@ -1,11 +1,6 @@
 
 #include "Common.hlsl"
 
-struct VertexIn
-{
-	float3 PosL    : POSITION;
-};
-
 struct VertexOut
 {
 	float4 PosH : SV_POSITION;
@@ -23,7 +18,7 @@ cbuffer cbPerObject : register(b0)
 	int pbrMaterials;
 };
  
-VertexOut main(VertexIn vin)
+VertexOut main(VertexOnlyPos vin)
 {
 	VertexOut vout;
 

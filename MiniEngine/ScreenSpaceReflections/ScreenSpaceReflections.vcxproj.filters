@@ -91,13 +91,16 @@
     <FxCompile Include="Shaders\renderHolepatchingPS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
-    <FxCompile Include="Shaders\renderHolepatchingVS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
     <FxCompile Include="Shaders\renderSceneBRDFPS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
     <FxCompile Include="Shaders\renderSceneBRDFVS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\QuadVS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\FxaaPS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
   </ItemGroup>

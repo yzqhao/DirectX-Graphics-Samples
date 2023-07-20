@@ -12,259 +12,12 @@
     <Filter Include="cgltf">
       <UniqueIdentifier>{00f87ad7-a7fd-4383-b457-7a1e223144fb}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BitonicSort.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="BuddyAllocator.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="BufferManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraController.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CommandAllocatorPool.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CommandContext.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CommandListManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CommandSignature.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="d3dx12.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="dds.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DDSTextureLoader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DepthBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DepthOfField.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DynamicDescriptorHeap.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DescriptorHeap.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GpuBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineProfiling.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="EsramAllocator.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="FileUtility.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="FXAA.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GameInput.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GpuResource.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GpuTimeManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GameCore.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsCommon.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsCore.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphRenderer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Hash.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageScaling.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="LinearAllocator.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\BoundingBox.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\BoundingPlane.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\BoundingSphere.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Common.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Frustum.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Matrix3.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Matrix4.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Quaternion.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Random.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Scalar.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Transform.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Math\Vector.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MotionBlur.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleEffect.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleEffectManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleEffectProperties.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleShaderStructs.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PipelineState.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PostEffects.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineTuning.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Display.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ReadbackBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RootSignature.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="SamplerManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ShadowBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ShadowCamera.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="SSAO.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="SystemTime.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TemporalEffects.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TextRenderer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="UploadBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Util\CommandLineArg.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="VectorMath.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="BundleReader.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GltfLoader.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="IndicesStream.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Macros.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PlatformConfig.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="RHIDefine.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexStream.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexStreamLayout.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="cgltf\cgltf.h">
-      <Filter>cgltf</Filter>
-    </ClInclude>
-    <ClInclude Include="cgltf\cgltf_write.h">
-      <Filter>cgltf</Filter>
-    </ClInclude>
-    <ClInclude Include="cgltf\GLTFLoader.h">
-      <Filter>cgltf</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Math\Functions.inl">
-      <Filter>头文件</Filter>
-    </None>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{bf903855-e1ce-4326-8735-98be34ac19ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui\backends">
+      <UniqueIdentifier>{09e5d752-5ee4-4301-84cd-acc476b786ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BundleReader.cpp">
@@ -279,5 +32,91 @@
     <ClCompile Include="VertexStream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_tables.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\backends\imgui_impl_dx12.cpp">
+      <Filter>imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\backends\imgui_impl_win32.cpp">
+      <Filter>imgui\backends</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Macros.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformConfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RHIDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexStreamLayout.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BundleReader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GltfLoader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IndicesStream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cgltf\GLTFLoader.h">
+      <Filter>cgltf</Filter>
+    </ClInclude>
+    <ClInclude Include="cgltf\cgltf.h">
+      <Filter>cgltf</Filter>
+    </ClInclude>
+    <ClInclude Include="cgltf\cgltf_write.h">
+      <Filter>cgltf</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_rectpack.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_textedit.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imstb_truetype.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\backends\imgui_impl_dx12.h">
+      <Filter>imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui\backends\imgui_impl_win32.h">
+      <Filter>imgui\backends</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

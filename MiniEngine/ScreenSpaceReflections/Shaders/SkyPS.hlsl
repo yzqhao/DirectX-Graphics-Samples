@@ -1,12 +1,5 @@
 
-#include "Common.hlsl"
-
-struct VertexIn
-{
-	float3 PosL    : POSITION;
-	float3 NormalL : NORMAL;
-	float2 TexC    : TEXCOORD;
-};
+#include "SSRRenderCommon.hlsl"
 
 struct VertexOut
 {

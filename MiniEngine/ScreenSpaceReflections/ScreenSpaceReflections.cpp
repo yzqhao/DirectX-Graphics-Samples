@@ -17,13 +17,16 @@
 #include "CompiledShaders/SkyPS.h"
 #include "CompiledShaders/renderSceneBRDFVS.h"
 #include "CompiledShaders/renderSceneBRDFPS.h"
-#include "CompiledShaders/renderHolepatchingVS.h"
+#include "CompiledShaders/QuadVS.h"
 #include "CompiledShaders/renderHolepatchingPS.h"
+#include "CompiledShaders/FxaaPS.h"
+#include "PostEffects.h"
 
 #include "../Common/GltfLoader.h"
 
 #include <codecvt>
 #include <locale> 
+#include "../Common/imgui/imgui.h"
 
 using namespace GameCore;
 using namespace Graphics;
@@ -387,8 +390,10 @@ static std::wstring stringToWstring(const char* utf8Bytes)
 	return converter.from_bytes(utf8Bytes);
 }
 
-void ScreenSpaceReflections::Startup(void)
+void ScreenSpaceReflections::_DoStartup(void)
 {
+	PostEffects::EnablePostEffects = false;
+
 	{
 		GraphicsContext& InitContext = GraphicsContext::Begin();
 
@@ -409,6 +414,7 @@ void ScreenSpaceReflections::Startup(void)
 			mGBufferD.Create(L"G Buffer D", g_DisplayWidth, g_DisplayHeight, 1, DXGI_FORMAT_R16G16_FLOAT, esram);
 			mGBufferDepth.Create(L"Depth Buffer A", g_DisplayWidth, g_DisplayHeight, 1, DXGI_FORMAT_D32_FLOAT, esram);
 			mRenderSceneBrdf.Create(L"BRDF Buffer", g_DisplayWidth, g_DisplayHeight, 1, DXGI_FORMAT_R16G16B16A16_FLOAT, esram);
+			mRenderOutBuffer.Create(L"Out Buffer", g_DisplayWidth, g_DisplayHeight, 1, DXGI_FORMAT_R16G16B16A16_FLOAT, esram);
 
 		esram.PopStack();
 
@@ -598,10 +604,19 @@ void ScreenSpaceReflections::Startup(void)
 		renderHolepatching = gbufferPSO;
 		renderHolepatching.SetDepthStencilState(DepthStateDisabled);
 		renderHolepatching.SetInputLayout(_countof(posAndUV), posAndUV);
-		renderHolepatching.SetVertexShader(g_prenderHolepatchingVS, sizeof(g_prenderHolepatchingVS));
+		renderHolepatching.SetVertexShader(g_pQuadVS, sizeof(g_pQuadVS));
 		renderHolepatching.SetPixelShader(g_prenderHolepatchingPS, sizeof(g_prenderHolepatchingPS));
-		renderHolepatching.SetRenderTargetFormats(1, &g_SceneColorBuffer.GetFormat(), DXGI_FORMAT_UNKNOWN);
+		renderHolepatching.SetRenderTargetFormats(1, &mRenderOutBuffer.GetFormat(), DXGI_FORMAT_UNKNOWN);
 		renderHolepatching.Finalize();
+
+		GraphicsPSO& fxaa = mGraphicsPSO["fxaa"];
+		fxaa = gbufferPSO;
+		fxaa.SetDepthStencilState(DepthStateDisabled);
+		fxaa.SetInputLayout(_countof(posAndUV), posAndUV);
+		fxaa.SetVertexShader(g_pQuadVS, sizeof(g_pQuadVS));
+		fxaa.SetPixelShader(g_pFxaaPS, sizeof(g_pFxaaPS));
+		fxaa.SetRenderTargetFormats(1, &g_SceneColorBuffer.GetFormat(), DXGI_FORMAT_UNKNOWN);
+		fxaa.Finalize();
 	}
 
 	{	// vertex index buffer
@@ -741,6 +756,7 @@ void ScreenSpaceReflections::Startup(void)
 		m_Camera.SetEyeAtUp(eye, targetpos, Vector3(kYUnitVector));
 		m_Camera.SetZRange(0.1f, 1000.0f);
 		m_CameraController.reset(new FlyingFPSCamera(m_Camera, Vector3(kYUnitVector)));
+		m_CameraController->SetTimeScale(0.1f);
 	}
 
 	{	// Pre Draw
@@ -923,7 +939,7 @@ void ScreenSpaceReflections::Update(float deltaT)
 	mHolepatchingUniformData.useFadeEffect = 0.0f;
 }
 
-void ScreenSpaceReflections::RenderScene(void)
+void ScreenSpaceReflections::_DoRenderScene(void)
 {
 	GraphicsContext& gfxContext = GraphicsContext::Begin(L"Scene Render");
 
@@ -981,7 +997,7 @@ void ScreenSpaceReflections::RenderScene(void)
 	gfxContext.TransitionResource(mGBufferD, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, true);
 	gfxContext.TransitionResource(mGBufferDepth, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, true);
 	gfxContext.TransitionResource(mRenderSceneBrdf, D3D12_RESOURCE_STATE_RENDER_TARGET, true);
-	gfxContext.ClearColor(mRenderSceneBrdf);
+	//gfxContext.ClearColor(mRenderSceneBrdf);
 	gfxContext.SetRenderTargets(1, &mRenderSceneBrdf.GetRTV());
 	gfxContext.SetPipelineState(mGraphicsPSO["renderSceneBRDF"]);
 	gfxContext.SetVertexBuffer(0, mVertexViews["Quad"]);
@@ -989,12 +1005,22 @@ void ScreenSpaceReflections::RenderScene(void)
 	gfxContext.Draw(3);
 
 	gfxContext.TransitionResource(mRenderSceneBrdf, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, true);
-	gfxContext.TransitionResource(g_SceneColorBuffer, D3D12_RESOURCE_STATE_RENDER_TARGET, true);
-	gfxContext.ClearColor(g_SceneColorBuffer);
-	gfxContext.SetRenderTargets(1, &g_SceneColorBuffer.GetRTV());
+	gfxContext.TransitionResource(mRenderOutBuffer, D3D12_RESOURCE_STATE_RENDER_TARGET, true);
+	//gfxContext.ClearColor(mRenderOutBuffer);
+	gfxContext.SetRenderTargets(1, &mRenderOutBuffer.GetRTV());
 	gfxContext.SetPipelineState(mGraphicsPSO["renderHolepatching"]);
 	gfxContext.SetVertexBuffer(0, mVertexViews["Quad"]);
 	gfxContext.SetDynamicConstantBufferView(kMeshCBV, sizeof(mHolepatchingUniformData), &mHolepatchingUniformData);
+	gfxContext.SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	gfxContext.Draw(3);
+
+	gfxContext.TransitionResource(mRenderOutBuffer, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, true);
+	gfxContext.TransitionResource(g_SceneColorBuffer, D3D12_RESOURCE_STATE_RENDER_TARGET, true);
+	//gfxContext.ClearColor(g_SceneColorBuffer);
+	gfxContext.SetRenderTargets(1, &g_SceneColorBuffer.GetRTV());
+	gfxContext.SetPipelineState(mGraphicsPSO["fxaa"]);
+	gfxContext.SetDynamicDescriptors(kSkyRTV, 0, 1, &mRenderOutBuffer.GetSRV());
+	gfxContext.SetVertexBuffer(0, mVertexViews["Quad"]);
 	gfxContext.SetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	gfxContext.Draw(3);
 

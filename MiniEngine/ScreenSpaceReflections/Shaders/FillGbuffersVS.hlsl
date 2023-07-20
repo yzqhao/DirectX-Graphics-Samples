@@ -1,12 +1,5 @@
 
-#include "Common.hlsl"
-
-struct VertexIn
-{
-	float3 PosL    : POSITION;
-    float3 NormalL : NORMAL;
-	float2 TexC    : TEXCOORD;
-};
+#include "SSRRenderCommon.hlsl"
 
 struct VertexOut
 {
@@ -29,7 +22,7 @@ cbuffer cbPerObject : register(b0)
 	int pbrMaterials;
 };
 
-VertexOut main(VertexIn vin)
+VertexOut main(VertexPosUvNormal vin)
 {
 	VertexOut vout = (VertexOut)0.0f;
 	

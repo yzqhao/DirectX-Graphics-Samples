@@ -222,8 +222,8 @@ namespace
             ASSERT(false, "Mouse CreateDevice failed.");
         if (FAILED(s_Mouse->SetDataFormat(&c_dfDIMouse2)))
             ASSERT(false, "Mouse SetDataFormat failed.");
-        if (FAILED(s_Mouse->SetCooperativeLevel(GameCore::g_hWnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE)))
-            ASSERT(false, "Mouse SetCooperativeLevel failed.");
+        /*if (FAILED(s_Mouse->SetCooperativeLevel(GameCore::g_hWnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE)))
+            ASSERT(false, "Mouse SetCooperativeLevel failed.");*/
 
         KbmZeroInputs();
     }
@@ -377,8 +377,11 @@ void GameInput::Update( float frameDelta )
         if (s_MouseState.rgbButtons[i] > 0) s_Buttons[0][kMouse0 + i] = true;
     }
 
-    s_Analogs[kAnalogMouseX] = (float)s_MouseState.lX * .0018f;
-    s_Analogs[kAnalogMouseY] = (float)s_MouseState.lY * -.0018f;
+    if (s_Buttons[0][kMouse1])
+	{
+		s_Analogs[kAnalogMouseX] = (float)s_MouseState.lX * .0018f;
+		s_Analogs[kAnalogMouseY] = (float)s_MouseState.lY * -.0018f;
+    }
 
     if (s_MouseState.lZ > 0)
         s_Analogs[kAnalogMouseScroll] = 1.0f;

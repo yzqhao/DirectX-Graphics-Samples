@@ -92,7 +92,8 @@ namespace GameCore
         return GameInput::IsFirstPressed(GameInput::kKey_escape);
     }
 
-    HWND g_hWnd = nullptr;
+	HWND g_hWnd = nullptr;
+    IGameApp* g_app = nullptr;
 
     LRESULT CALLBACK WndProc( HWND, UINT, WPARAM, LPARAM );
 
@@ -100,6 +101,8 @@ namespace GameCore
     {
         if (!XMVerifyCPUSupport())
             return 1;
+
+        g_app = &app;
 
         Microsoft::WRL::Wrappers::RoInitializeWrapper InitializeWinRT(RO_INIT_MULTITHREADED);
         ASSERT_SUCCEEDED(InitializeWinRT);
@@ -161,6 +164,9 @@ namespace GameCore
     //--------------------------------------------------------------------------------------
     LRESULT CALLBACK WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
     {
+		if (g_app->WndProcHandler(hWnd, message, wParam, lParam))
+			return true;
+
         switch( message )
         {
         case WM_SIZE:

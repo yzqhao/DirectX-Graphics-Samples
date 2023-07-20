@@ -65,6 +65,7 @@ void BaseCamera::Update()
 
 void Camera::UpdateProjMatrix( void )
 {
+    /*
     if (m_bDefine)
 	{
         SetProjMatrix( Matrix4(
@@ -76,9 +77,16 @@ void Camera::UpdateProjMatrix( void )
 
         return;
     }
+    */
     
     float Y = 1.0f / std::tanf( m_VerticalFOV * 0.5f );
     float X = Y * m_AspectRatio;
+
+    if (m_bDefine)
+    {
+        X = 1.0f / std::tanf(m_VerticalFOV);
+        Y = X / m_AspectRatio;
+    }
 
     float Q1, Q2;
 
@@ -111,12 +119,20 @@ void Camera::UpdateProjMatrix( void )
             Q1 = m_FarClip / (m_NearClip - m_FarClip);
             Q2 = Q1 * m_NearClip;
         }
+
+		if (m_bDefine)
+		{
+			Q1 = m_FarClip / (m_FarClip - m_NearClip);
+			Q2 = Q1 * -m_NearClip;
+		}
     }
+
+    float Q3 = m_bDefine ? 1.0f : -1.0f;
 
     SetProjMatrix( Matrix4(
         Vector4( X, 0.0f, 0.0f, 0.0f ),
         Vector4( 0.0f, Y, 0.0f, 0.0f ),
-        Vector4( 0.0f, 0.0f, Q1, -1.0f ),
+        Vector4( 0.0f, 0.0f, Q1, Q3),
         Vector4( 0.0f, 0.0f, Q2, 0.0f )
         ) );
 }

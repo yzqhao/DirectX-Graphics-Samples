@@ -43,6 +43,8 @@ namespace GameCore
 
         // Override this in applications that use DirectX Raytracing to require a DXR-capable device.
         virtual bool RequiresRaytracingSupport() const { return false; }
+
+        virtual bool WndProcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) { return false; }
     };
 }
 

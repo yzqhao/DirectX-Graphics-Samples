@@ -16,6 +16,7 @@
 #include "TextureManager.h"
 #include "UploadBuffer.h"
 #include "../Common/Macros.h"
+#include "../Common/Application.h"
 
 #include <unordered_map>
 
@@ -136,7 +137,7 @@ enum
 	SCENE_EXCLU_REFLECTIONS = 3,
 };
 
-class ScreenSpaceReflections : public GameCore::IGameApp
+class ScreenSpaceReflections : public Application
 {
 public:
 
@@ -145,11 +146,11 @@ public:
 	{
 	}
 
-	virtual void Startup(void) override;
+	virtual void _DoStartup(void) override;
 	virtual void Cleanup(void) override;
 
 	virtual void Update(float deltaT) override;
-	virtual void RenderScene(void) override;
+	virtual void _DoRenderScene(void) override;
 
 private:
 
@@ -188,6 +189,7 @@ private:
 	ColorBuffer mGBufferD;	// 
 	DepthBuffer mGBufferDepth;
 	ColorBuffer mRenderSceneBrdf;	// render brdf
+	ColorBuffer mRenderOutBuffer;	// render out buffer
 
 	StructuredBuffer mMaterialConstants;
 

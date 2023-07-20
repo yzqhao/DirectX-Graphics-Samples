@@ -1,29 +1,9 @@
 
 // Include common HLSL code.
-#include "Common.hlsl"
+#include "SSRRenderCommon.hlsl"
 #include "LightingUtil.hlsl"
 
-struct VertexIn
-{
-	float3 PosL    : POSITION;
-	float2 TexC    : TEXCOORD;
-};
-
-struct VertexOut
-{
-	float4 PosH    : SV_POSITION;
-	float2 TexC    : TEXCOORD;
-};
-
-struct PixelOut
-{
-	float4 albedo  : SV_Target0;
-    float4 normal  : SV_Target1;
-    float4 specular: SV_Target2;
-	float2 motion  : SV_Target3;
-};
-
-float4 main(VertexOut pin) : SV_TARGET
+float4 main(VertexOutPosUv pin) : SV_TARGET
 {
 	float4 Out;
 
