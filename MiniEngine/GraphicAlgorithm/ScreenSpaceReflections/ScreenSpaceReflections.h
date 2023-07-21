@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "pch.h"
+#include "../pch.h"
 #include "GameCore.h"
 #include "GraphicsCore.h"
 #include "SystemTime.h"
@@ -15,8 +15,8 @@
 #include "Camera.h"
 #include "TextureManager.h"
 #include "UploadBuffer.h"
-#include "../Common/Macros.h"
-#include "../Common/Application.h"
+#include "Macros.h"
+#include "Application.h"
 
 #include <unordered_map>
 

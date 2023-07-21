@@ -1,6 +1,6 @@
 
 // Include common HLSL code.
-#include "Common.hlsl"
+#include "../Common.hlsl"
 
 VertexOutPosUv main(VertexPosUv vin)
 {

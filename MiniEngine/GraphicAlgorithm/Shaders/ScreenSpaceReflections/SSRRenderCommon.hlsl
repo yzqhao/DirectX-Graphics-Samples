@@ -1,7 +1,7 @@
 #ifndef _SSR_RENDER_COMMON_
 #define _SSR_RENDER_COMMON_
 
-#include "Common.hlsl"
+#include "../Common.hlsl"
 
 struct MaterialData
 {

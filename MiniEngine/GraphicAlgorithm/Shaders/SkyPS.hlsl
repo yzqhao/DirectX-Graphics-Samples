@@ -1,5 +1,7 @@
 
-#include "SSRRenderCommon.hlsl"
+#include "Common.hlsl"
+
+TextureCube gCubeMap : register(t0);     // 0-skymap 
 
 struct VertexOut
 {

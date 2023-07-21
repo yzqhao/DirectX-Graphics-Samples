@@ -22,11 +22,11 @@
 #include "CompiledShaders/FxaaPS.h"
 #include "PostEffects.h"
 
-#include "../Common/GltfLoader.h"
+#include "GltfLoader.h"
+#include "imgui/imgui.h"
 
 #include <codecvt>
 #include <locale> 
-#include "../Common/imgui/imgui.h"
 
 using namespace GameCore;
 using namespace Graphics;

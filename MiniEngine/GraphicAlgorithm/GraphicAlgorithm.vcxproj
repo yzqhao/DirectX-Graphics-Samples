@@ -15,11 +15,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <RootNamespace>ScreenSpaceReflections</RootNamespace>
+    <RootNamespace>GraphicAlgorithm</RootNamespace>
     <ProjectGuid>{CE2BA141-597F-42C3-BCFF-883509EE0292}</ProjectGuid>
     <DefaultLanguage>en-US</DefaultLanguage>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>ScreenSpaceReflections</ProjectName>
+    <ProjectName>GraphicAlgorithm</ProjectName>
     <PlatformToolset>v142</PlatformToolset>
     <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
     <TargetRuntime>Native</TargetRuntime>
@@ -45,7 +45,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile />
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <AdditionalIncludeDirectories>..\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Common;..\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalOptions Condition="'$(Configuration)'=='Debug'">/nodefaultlib:MSVCRT %(AdditionalOptions)</AdditionalOptions>
@@ -55,14 +55,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="ScreenSpaceReflections.h" />
+    <ClInclude Include="ScreenSpaceReflections\ScreenSpaceReflections.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="ScreenSpaceReflections.cpp" />
+    <ClCompile Include="ScreenSpaceReflections\ScreenSpaceReflections.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../Core/Core.vcxproj">
@@ -111,11 +111,11 @@
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">csmain</EntryPointName>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.1</ShaderModel>
     </FxCompile>
-    <FxCompile Include="Shaders\FillGbuffersPS.hlsl">
+    <FxCompile Include="Shaders\ScreenSpaceReflections\FillGbuffersPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.1</ShaderModel>
     </FxCompile>
-    <FxCompile Include="Shaders\FillGbuffersVS.hlsl">
+    <FxCompile Include="Shaders\ScreenSpaceReflections\FillGbuffersVS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.1</ShaderModel>
     </FxCompile>
@@ -127,15 +127,15 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.1</ShaderModel>
     </FxCompile>
-    <FxCompile Include="Shaders\renderHolepatchingPS.hlsl">
+    <FxCompile Include="Shaders\ScreenSpaceReflections\renderHolepatchingPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.1</ShaderModel>
     </FxCompile>
-    <FxCompile Include="Shaders\renderSceneBRDFPS.hlsl">
+    <FxCompile Include="Shaders\ScreenSpaceReflections\renderSceneBRDFPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.1</ShaderModel>
     </FxCompile>
-    <FxCompile Include="Shaders\renderSceneBRDFVS.hlsl">
+    <FxCompile Include="Shaders\ScreenSpaceReflections\renderSceneBRDFVS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.1</ShaderModel>
     </FxCompile>

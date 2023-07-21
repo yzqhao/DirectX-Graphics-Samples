@@ -15,20 +15,26 @@
     <Filter Include="Shaders\comp">
       <UniqueIdentifier>{255604d3-af1a-4bba-8ed6-18adbf2478c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ScreenSpaceReflections">
+      <UniqueIdentifier>{094835e5-3288-487a-823c-24d28099336a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\ScreenSpaceReflections">
+      <UniqueIdentifier>{f158ae47-d9e4-4ca2-b58e-fa069591575e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="ScreenSpaceReflections.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ScreenSpaceReflections\ScreenSpaceReflections.cpp">
+      <Filter>ScreenSpaceReflections</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="ScreenSpaceReflections.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="ScreenSpaceReflections\ScreenSpaceReflections.h">
+      <Filter>ScreenSpaceReflections</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -76,25 +82,10 @@
     <FxCompile Include="Shaders\comp\copyDepth.hlsl">
       <Filter>Shaders\comp</Filter>
     </FxCompile>
-    <FxCompile Include="Shaders\FillGbuffersPS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\FillGbuffersVS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
     <FxCompile Include="Shaders\SkyPS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
     <FxCompile Include="Shaders\SkyVS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\renderHolepatchingPS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\renderSceneBRDFPS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="Shaders\renderSceneBRDFVS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
     <FxCompile Include="Shaders\QuadVS.hlsl">
@@ -102,6 +93,21 @@
     </FxCompile>
     <FxCompile Include="Shaders\FxaaPS.hlsl">
       <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ScreenSpaceReflections\renderSceneBRDFVS.hlsl">
+      <Filter>Shaders\ScreenSpaceReflections</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ScreenSpaceReflections\renderSceneBRDFPS.hlsl">
+      <Filter>Shaders\ScreenSpaceReflections</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ScreenSpaceReflections\renderHolepatchingPS.hlsl">
+      <Filter>Shaders\ScreenSpaceReflections</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ScreenSpaceReflections\FillGbuffersPS.hlsl">
+      <Filter>Shaders\ScreenSpaceReflections</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\ScreenSpaceReflections\FillGbuffersVS.hlsl">
+      <Filter>Shaders\ScreenSpaceReflections</Filter>
     </FxCompile>
   </ItemGroup>
 </Project>
